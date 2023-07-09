@@ -134,3 +134,13 @@ h1 {
 .hardMode .correct-position-hardMode {
   background-color: var(--correct);
 }
+
+@media screen and (min-width: 760px) {
+  .center {
+    padding: 0;
+    gap: 8px;
+    max-width: 20vw;
+    margin: auto;
+    text-align: center;
+  }
+}
