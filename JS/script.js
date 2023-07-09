@@ -87,3 +87,10 @@ Array.from({ length: rows }).forEach(() => {
 const initialCell = gridContainer.children[0];
 initialCell.focus();
 updateCurrentRow();
+const hardModeBtn = document.querySelector("#hard");
+
+hardModeBtn.addEventListener("click", () => {
+  document.body.classList.add("hardMode");
+  hardModeBtn.style.width = "100px";
+  easyModeBtn.style.width = "150px";
+});
