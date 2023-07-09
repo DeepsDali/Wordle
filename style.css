@@ -110,3 +110,27 @@ h1 {
   background-color: var(--dark-hardMode);
   width: 100px;
 }
+.hardMode {
+  background: linear-gradient(
+    to top left,
+    var(--darkest-hardMode),
+    var(--darker-hardMode)
+  );
+}
+.hardMode #enter {
+  color: var(--dark-hardMode);
+}
+.hardMode .cell {
+  background-color: var(--dark-hardMode);
+}
+.hardMode .curr-row-cell {
+  color: var(--dark-hardMode);
+  background-color: var(--light);
+}
+.hardMode .matching-char-hardMode {
+  background-color: var(--matching);
+}
+
+.hardMode .correct-position-hardMode {
+  background-color: var(--correct);
+}
