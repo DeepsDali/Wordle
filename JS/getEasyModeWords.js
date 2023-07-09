@@ -450,3 +450,7 @@ const easyModeWords = [
   "Vital",
   "Voice",
 ];
+export const getEasyModeWord = () => {
+  const randomIndex = Math.floor(Math.random() * easyModeWords.length);
+  return easyModeWords[randomIndex].toUpperCase();
+};

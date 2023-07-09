@@ -1,4 +1,6 @@
 import { applyClassLists } from "./applyClasslist.js";
+import { getEasyModeWord } from "./getEasyModeWords.js";
+
 const rows = 6;
 const columns = 5;
 const gridContainer = document.getElementById("container");
@@ -28,9 +30,12 @@ const handleCellInput = (event) => {
     nextCell.focus();
   }
 };
-//Handle key event
-randomWord = "GREAT";
+//Get random word
+let easyModeWord = getEasyModeWord();
+randomWord = easyModeWord;
+console.log(randomWord);
 
+//Handle key event
 const handleEnterKey = (event) => {
   if (event.key === "Enter") {
     currentRow++;
