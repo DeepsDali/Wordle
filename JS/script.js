@@ -40,6 +40,16 @@ const handleEnterKey = (event) => {
     updateCurrentRow();
   }
 };
+//Enter button eventlistener
+const enterButton = document.getElementById("enter");
+enterButton.addEventListener("click", () => {
+  currentRow++;
+  currentColumn = 0;
+  const nextCell = gridContainer.children[currentRow * columns];
+  nextCell.focus();
+  updateCurrentRow();
+});
+
 //Update rows
 const updateCurrentRow = () => {
   const allRows = Array.from(gridContainer.children);
