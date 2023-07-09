@@ -94,3 +94,10 @@ hardModeBtn.addEventListener("click", () => {
   hardModeBtn.style.width = "100px";
   easyModeBtn.style.width = "150px";
 });
+
+const easyModeBtn = document.querySelector("#easy");
+easyModeBtn.addEventListener("click", () => {
+  document.body.classList.remove("hardMode");
+  easyModeBtn.style.width = "100px";
+  hardModeBtn.style.width = "150px";
+});
