@@ -7,8 +7,11 @@
 
 :root {
   --light: #ece2fd;
+  --dark-hardMode: #043b7a;
   --dark: #654e92;
+  --darker-hardMode: #0b1c5b;
   --darker: #4f3d71;
+  --darkest-hardMode: #040e34;
   --darkest: #30214c;
   --matching: #a0883a;
   --correct: #4a8b09;
@@ -89,4 +92,21 @@ h1 {
 }
 .correct-position {
   background-color: var(--correct);
+}
+#enter {
+  color: var(--dark);
+}
+.mode {
+  color: var(--light);
+}
+#easy {
+  background-color: var(--dark);
+  width: 150px;
+}
+.btn:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#hard {
+  background-color: var(--dark-hardMode);
+  width: 100px;
 }
