@@ -1,3 +1,4 @@
+import { applyClassLists } from "./applyClasslist.js";
 const rows = 6;
 const columns = 5;
 const gridContainer = document.getElementById("container");
@@ -39,6 +40,7 @@ const handleEnterKey = (event) => {
       const nextCell = gridContainer.children[nextCellIndex];
       nextCell.focus();
     }
+    applyClassLists(randomWord);
     updateCurrentRow();
   }
 };
@@ -49,6 +51,7 @@ enterButton.addEventListener("click", () => {
   currentColumn = 0;
   const nextCell = gridContainer.children[currentRow * columns];
   nextCell.focus();
+  applyClassLists(randomWord);
   updateCurrentRow();
 });
 
