@@ -63,3 +63,7 @@ h1 {
   background-color: var(--dark);
   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
+.curr-row-cell {
+  background-color: var(--light);
+  color: var(--darker);
+}

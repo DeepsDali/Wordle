@@ -37,7 +37,19 @@ const handleEnterKey = (event) => {
       const nextCell = gridContainer.children[nextCellIndex];
       nextCell.focus();
     }
+    updateCurrentRow();
   }
+};
+//Update rows
+const updateCurrentRow = () => {
+  const allRows = Array.from(gridContainer.children);
+  const rowStartIndex = currentRow * columns;
+  const rowEndIndex = rowStartIndex + columns;
+
+  allRows.forEach((cell, i) => {
+    const isCurrentRowCell = i >= rowStartIndex && i < rowEndIndex;
+    cell.classList.toggle("curr-row-cell", isCurrentRowCell);
+  });
 };
 // Create basic grid
 Array.from({ length: rows }).forEach(() => {
@@ -54,3 +66,4 @@ Array.from({ length: rows }).forEach(() => {
 // Add focus to the first cell on site load
 const initialCell = gridContainer.children[0];
 initialCell.focus();
+updateCurrentRow();
