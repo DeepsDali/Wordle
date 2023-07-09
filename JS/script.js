@@ -1,5 +1,6 @@
 import { applyClassLists } from "./applyClasslist.js";
 import { getEasyModeWord } from "./getEasyModeWords.js";
+import { getHardModeWord } from "./getHardModeWords.js";
 
 const rows = 6;
 const columns = 5;
@@ -31,10 +32,12 @@ const handleCellInput = (event) => {
   }
 };
 //Get random word
+
+let hardModeWord = await getHardModeWord();
 let easyModeWord = getEasyModeWord();
 randomWord = easyModeWord;
-console.log(randomWord);
-
+console.log(`Easy-mode word: ${randomWord}`);
+applyClassLists(randomWord);
 //Handle key event
 const handleEnterKey = (event) => {
   if (event.key === "Enter") {
@@ -45,7 +48,7 @@ const handleEnterKey = (event) => {
       const nextCell = gridContainer.children[nextCellIndex];
       nextCell.focus();
     }
-    applyClassLists(randomWord);
+    applyClassLists(randomWord, document.body.classList.contains("hardMode"));
     updateCurrentRow();
   }
 };
@@ -56,7 +59,7 @@ enterButton.addEventListener("click", () => {
   currentColumn = 0;
   const nextCell = gridContainer.children[currentRow * columns];
   nextCell.focus();
-  applyClassLists(randomWord);
+  applyClassLists(randomWord, document.body.classList.contains("hardMode"));
   updateCurrentRow();
 });
 
@@ -88,16 +91,22 @@ const initialCell = gridContainer.children[0];
 initialCell.focus();
 updateCurrentRow();
 const hardModeBtn = document.querySelector("#hard");
-
+//HardMode eventlistener
 hardModeBtn.addEventListener("click", () => {
   document.body.classList.add("hardMode");
   hardModeBtn.style.width = "100px";
   easyModeBtn.style.width = "150px";
+  randomWord = hardModeWord.word;
+  applyClassLists(randomWord, document.body.classList.contains("hardMode"));
+  console.log(`Hard-mode word: ${randomWord}`);
 });
-
+//EasyMode eventlistener
 const easyModeBtn = document.querySelector("#easy");
 easyModeBtn.addEventListener("click", () => {
   document.body.classList.remove("hardMode");
   easyModeBtn.style.width = "100px";
   hardModeBtn.style.width = "150px";
+
+  randomWord = easyModeWord;
+  console.log(`Easy-mode word: ${randomWord}`);
 });
