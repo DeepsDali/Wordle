@@ -16,8 +16,12 @@ export const applyClassLists = (randomWord) => {
   console.log("All cells:", allCells);
   arrayOfCells.forEach((cell, i) => {
     const cellValue = cell.value ? cell.value.toUpperCase() : "";
+    const randomChar = randomWord[i];
     if (splitRandom.includes(cellValue)) {
       cell.classList.add("matching-char");
+    }
+    if (cellValue === randomChar) {
+      cell.classList.add("correct-position");
     }
   });
 };
