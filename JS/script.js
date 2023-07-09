@@ -38,3 +38,6 @@ Array.from({ length: rows }).forEach(() => {
     gridContainer.appendChild(cell);
   });
 });
+// Add focus to the first cell on site load
+const initialCell = gridContainer.children[0];
+initialCell.focus();
