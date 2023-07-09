@@ -18,3 +18,19 @@ Have fun testing your word guessing skills! Guess a 5 letter word in 6 attempts 
 - As a player I want the option of playing an Easy mode with commonly used words.
 
 - As a player I want the option of playing a Hard mode with a mix of common and uncommon words.
+
+~ Playing experience
+
+- As a player I want the site to be accessible to use on a screen reader.
+
+- As a player, if I enter an incorrect character, I want to be notified and the charachter should not be accepted as a valid input.
+
+- As a player, if I enter an incorrect woord, I want to be notified and the word should not be accepted as a valid guess.
+
+~ Game Completion
+
+- As a player, I want to start a new game after winning or losing.
+
+- As a player, I would like to see a congratulations message and provide an option to start a new game upon winning.
+
+- As a player, if I am unable to guess the correct word after 6 attempts I want the correct word revealed, with an option to start a new game.
