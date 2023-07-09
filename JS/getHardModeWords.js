@@ -1,17 +1,30 @@
-export const getHardModeWord = async () => {
-  try {
-    const api = `https://random-word-api.herokuapp.com/word?length=5`;
-    const response = await fetch(api);
+export const applyClassLists = async (randomWord, isHardMode) => {
+  const gridContainer = document.getElementById("container");
+  const allCells = Array.from(gridContainer.getElementsByClassName("cell"));
+  console.log(randomWord);
+  const currRowCells = allCells.filter((cell) =>
+    cell.classList.contains("curr-row-cell")
+  );
 
-    if (response.ok) {
-      const data = await response.json();
-      let word = data[0].toUpperCase();
-      return { word };
-    } else {
-      throw new Error(response.status);
+  const splitRandom = randomWord.split("");
+  const arrayOfCells = currRowCells.map((cell) => cell);
+
+  arrayOfCells.forEach((cell, i) => {
+    const cellValue = cell.value ? cell.value.toUpperCase() : "";
+    const randomChar = randomWord[i];
+
+    cell.classList.remove("matching-char", "correct-position");
+
+    if (splitRandom.includes(cellValue)) {
+      cell.classList.add(
+        isHardMode ? "matching-char-hardMode" : "matching-char"
+      );
     }
-  } catch (error) {
-    console.error("⚠️ Something went wrong");
-    throw new Error("Failed to get word");
-  }
+
+    if (cellValue === randomChar) {
+      cell.classList.add(
+        isHardMode ? "correct-position-hardMode" : "correct-position"
+      );
+    }
+  });
 };
