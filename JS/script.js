@@ -26,7 +26,16 @@ const handleCellInput = (event) => {
     nextCell.focus();
   }
 };
+//Handle key event
 
+const handleEnterKey = (event) => {
+  if (event.key === "Enter") {
+    currentRow++;
+    currentColumn = 0;
+    const nextCell = gridContainer.children[currentRow * columns];
+    nextCell.focus();
+  }
+};
 // Create basic grid
 Array.from({ length: rows }).forEach(() => {
   Array.from({ length: columns }).forEach(() => {
@@ -35,6 +44,7 @@ Array.from({ length: rows }).forEach(() => {
     cell.type = "text";
     cell.maxLength = 1;
     cell.addEventListener("input", handleCellInput);
+    cell.addEventListener("keydown", handleEnterKey);
     gridContainer.appendChild(cell);
   });
 });
