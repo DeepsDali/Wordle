@@ -4,6 +4,7 @@ const gridContainer = document.getElementById("container");
 let currentRow = 0;
 let currentColumn = 0;
 let isCurrentRowFilled = false;
+let randomWord = "";
 
 //Handle inputs into the cell
 const handleCellInput = (event) => {
@@ -27,6 +28,7 @@ const handleCellInput = (event) => {
   }
 };
 //Handle key event
+randomWord = "GREAT";
 
 const handleEnterKey = (event) => {
   if (event.key === "Enter") {

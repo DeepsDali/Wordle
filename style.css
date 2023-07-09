@@ -10,6 +10,8 @@
   --dark: #654e92;
   --darker: #4f3d71;
   --darkest: #30214c;
+  --matching: #a0883a;
+  --correct: #4a8b09;
 }
 body {
   max-width: 100vw;
@@ -81,4 +83,10 @@ h1 {
 }
 #enter {
   color: var(--dark);
+}
+.matching-char {
+  background-color: var(--matching);
+}
+.correct-position {
+  background-color: var(--correct);
 }
