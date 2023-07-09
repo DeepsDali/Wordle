@@ -32,8 +32,11 @@ const handleEnterKey = (event) => {
   if (event.key === "Enter") {
     currentRow++;
     currentColumn = 0;
-    const nextCell = gridContainer.children[currentRow * columns];
-    nextCell.focus();
+    const nextCellIndex = currentRow * columns;
+    if (nextCellIndex < gridContainer.children.length) {
+      const nextCell = gridContainer.children[nextCellIndex];
+      nextCell.focus();
+    }
   }
 };
 // Create basic grid
