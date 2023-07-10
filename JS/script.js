@@ -1,43 +1,25 @@
-import { applyClassLists } from "./applyClasslist.js";
 import { getEasyModeWord } from "./getEasyModeWords.js";
 import { getHardModeWord } from "./getHardModeWords.js";
+import {
+  handleCellInput,
+  updateCurrentRow,
+  applyClassLists,
+} from "./helpers.js";
 
 const rows = 6;
 const columns = 5;
 const gridContainer = document.getElementById("container");
 let currentRow = 0;
 let currentColumn = 0;
-let isCurrentRowFilled = false;
 let randomWord = "";
 
-//Handle inputs into the cell
-const handleCellInput = (event) => {
-  const currentCell = event.target;
-  const inputValue = currentCell.value.slice(0, 1).toUpperCase();
-  currentCell.value = inputValue;
-
-  if (currentRow === rows - 1 && currentColumn === columns - 1) {
-    return;
-  }
-  if (currentColumn < columns - 1) {
-    const nextCell =
-      gridContainer.children[currentRow * columns + currentColumn + 1];
-    nextCell.focus();
-    currentColumn++;
-  } else if (currentRow < rows - 1 && isCurrentRowFilled) {
-    currentRow++;
-    currentColumn = 0;
-    const nextCell = gridContainer.children[currentRow * columns];
-    nextCell.focus();
-  }
-};
 //Get random word
-
 let hardModeWord = await getHardModeWord();
 let easyModeWord = getEasyModeWord();
 randomWord = easyModeWord;
 console.log(`Easy-mode word: ${randomWord}`);
 applyClassLists(randomWord);
+
 //Handle key event
 const handleEnterKey = (event) => {
   if (event.key === "Enter") {
@@ -49,9 +31,10 @@ const handleEnterKey = (event) => {
       nextCell.focus();
     }
     applyClassLists(randomWord, document.body.classList.contains("hardMode"));
-    updateCurrentRow();
+    updateCurrentRow(gridContainer, currentRow, columns);
   }
 };
+
 //Enter button eventlistener
 const enterButton = document.getElementById("enter");
 enterButton.addEventListener("click", () => {
@@ -60,20 +43,9 @@ enterButton.addEventListener("click", () => {
   const nextCell = gridContainer.children[currentRow * columns];
   nextCell.focus();
   applyClassLists(randomWord, document.body.classList.contains("hardMode"));
-  updateCurrentRow();
+  updateCurrentRow(gridContainer, currentRow, columns);
 });
 
-//Update rows
-const updateCurrentRow = () => {
-  const allRows = Array.from(gridContainer.children);
-  const rowStartIndex = currentRow * columns;
-  const rowEndIndex = rowStartIndex + columns;
-
-  allRows.forEach((cell, i) => {
-    const isCurrentRowCell = i >= rowStartIndex && i < rowEndIndex;
-    cell.classList.toggle("curr-row-cell", isCurrentRowCell);
-  });
-};
 // Create basic grid
 Array.from({ length: rows }).forEach(() => {
   Array.from({ length: columns }).forEach(() => {
@@ -87,11 +59,13 @@ Array.from({ length: rows }).forEach(() => {
     gridContainer.appendChild(cell);
   });
 });
+
 // Add focus to the first cell on site load
 const initialCell = gridContainer.children[0];
 initialCell.focus();
-updateCurrentRow();
+updateCurrentRow(gridContainer, currentRow, columns);
 const hardModeBtn = document.querySelector("#hard");
+
 //HardMode eventlistener
 hardModeBtn.addEventListener("click", () => {
   document.body.classList.add("hardMode");
@@ -103,13 +77,13 @@ hardModeBtn.addEventListener("click", () => {
   hardModeBtn.setAttribute("aria-pressed", "true");
   easyModeBtn.setAttribute("aria-pressed", "false");
 });
+
 //EasyMode eventlistener
 const easyModeBtn = document.querySelector("#easy");
 easyModeBtn.addEventListener("click", () => {
   document.body.classList.remove("hardMode");
   easyModeBtn.style.width = "100px";
   hardModeBtn.style.width = "150px";
-
   randomWord = easyModeWord;
   console.log(`Easy-mode word: ${randomWord}`);
   hardModeBtn.setAttribute("aria-pressed", "false");
