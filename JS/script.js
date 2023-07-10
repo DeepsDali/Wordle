@@ -83,6 +83,7 @@ Array.from({ length: rows }).forEach(() => {
     cell.maxLength = 1;
     cell.addEventListener("input", handleCellInput);
     cell.addEventListener("keydown", handleEnterKey);
+    cell.setAttribute("aria-label", "Cell");
     gridContainer.appendChild(cell);
   });
 });
@@ -99,6 +100,8 @@ hardModeBtn.addEventListener("click", () => {
   randomWord = hardModeWord.word;
   applyClassLists(randomWord, document.body.classList.contains("hardMode"));
   console.log(`Hard-mode word: ${randomWord}`);
+  hardModeBtn.setAttribute("aria-pressed", "true");
+  easyModeBtn.setAttribute("aria-pressed", "false");
 });
 //EasyMode eventlistener
 const easyModeBtn = document.querySelector("#easy");
@@ -109,4 +112,6 @@ easyModeBtn.addEventListener("click", () => {
 
   randomWord = easyModeWord;
   console.log(`Easy-mode word: ${randomWord}`);
+  hardModeBtn.setAttribute("aria-pressed", "false");
+  easyModeBtn.setAttribute("aria-pressed", "true");
 });
