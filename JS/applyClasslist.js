@@ -19,12 +19,14 @@ export const applyClassLists = async (randomWord, isHardMode) => {
       cell.classList.add(
         isHardMode ? "matching-char-hardMode" : "matching-char"
       );
+      cell.setAttribute("aria-label", "Matching character");
     }
 
     if (cellValue === randomChar) {
       cell.classList.add(
         isHardMode ? "correct-position-hardMode" : "correct-position"
       );
+      cell.setAttribute("aria-label", "Correct position");
     }
   });
 };
