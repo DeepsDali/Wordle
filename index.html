@@ -20,12 +20,26 @@
       <h1>Wordle</h1>
     </header>
     <main>
-      <section class="container center" id="container"></section>
+      <section
+        class="container center"
+        id="container"
+        aria-label="Grid container"
+      ></section>
       <section class="center stack" id="btns-section">
-        <button id="enter" class="btn">ENTER</button>
+        <button id="enter" class="btn" aria-label="Enter button">ENTER</button>
         <div class="center row stack">
-          <button id="easy" class="btn mode">EASY MODE</button>
-          <button id="hard" class="btn mode">HARD MODE</button>
+          <button id="easy" class="btn mode" aria-label="Easy mode button">
+            EASY MODE
+          </button>
+          <button id="hard" class="btn mode" aria-label="Hard mode button">
+            HARD MODE
+          </button>
+        </div>
+        <div id="instructions" class="sr-only">
+          <p>
+            Instructions: Use the keyboard to input letters into the cells.
+            Press Enter to move to the next row.
+          </p>
         </div>
       </section>
     </main>

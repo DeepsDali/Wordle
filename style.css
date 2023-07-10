@@ -134,7 +134,16 @@ h1 {
 .hardMode .correct-position-hardMode {
   background-color: var(--correct);
 }
-
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
 @media screen and (min-width: 760px) {
   .center {
     padding: 0;
